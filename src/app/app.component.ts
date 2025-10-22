@@ -1,7 +1,7 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ApiService, Product } from './app.service';
 import { CurrencyPipe } from '@angular/common';
-import { timer } from 'rxjs';
+import { take, timer } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
     this.apiService
       .getProducts$()
-      .pipe(takeUntilDestroyed()) // Use takeUntilDestroyed
+      .pipe(take(1))
       .subscribe((products) => {
         this.products.set(products);
       });
