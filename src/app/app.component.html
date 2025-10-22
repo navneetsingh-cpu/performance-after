@@ -21,9 +21,19 @@
 
 <section class="hero">
   <picture>
-    <source media="(max-width: 576px)" srcset="images/Hero_Mobile.webp" />
-    <source media="(max-width: 960px)" srcset="images/Hero_Tablet.webp" />
-    <img src="images/Hero_Desktop.webp" />
+    <source
+      width="576"
+      height="576"
+      media="(max-width: 576px)"
+      srcset="images/Hero_Mobile.webp"
+    />
+    <source
+      width="960"
+      height="770"
+      media="(max-width: 960px)"
+      srcset="images/Hero_Tablet.webp"
+    />
+    <img width="1920" height="893" src="images/Hero_Desktop.webp" />
   </picture>
 
   <div class="hero-content">
@@ -38,7 +48,12 @@
   </div>
 </section>
 
-<section class="country-bar hidden"></section>
+<section class="country-bar">
+  <p>
+    @if(showCountryBar) { Orders to <b>${{ country }}</b> are subject to
+    <b>${{ vat }}%</b> VAT } @else{ }
+  </p>
+</section>
 
 <section class="best-sellers" id="best-sellers-section">
   <h1>Best Sellers</h1>
@@ -47,7 +62,12 @@
     <div class="container">
       <div class="product new">
         <div class="product-picture">
-          <img src="images/vr1.webp" alt="product: Penom Case" />
+          <img
+            width="155"
+            height="155"
+            src="images/vr1.webp"
+            alt="product: Penom Case"
+          />
         </div>
         <div class="product-info">
           <h5 class="categories">Headsets, Apple</h5>
@@ -62,6 +82,8 @@
       <div class="product new">
         <div class="product-picture">
           <img
+            width="155"
+            height="155"
             src="images/vr2.webp"
             alt="product: Noise Cancelling Headphone"
           />
@@ -79,6 +101,8 @@
       <div class="product">
         <div class="product-picture">
           <img
+            width="155"
+            height="155"
             src="images/vr3.webp"
             alt="product: Canon Digital SLR EOS Rebel T6"
           />
@@ -117,6 +141,7 @@
             [src]="product.image"
             [alt]="`product: ${product.title}`"
             loading="lazy"
+            height="220"
             width="250"
           />
         </div>
@@ -185,7 +210,7 @@
       </ul>
     </div>
   </div>
-  <div class="copyright-text">2020 &copy; All Rights Reserved</div>
+  <div class="copyright-text">2025 &copy; All Rights Reserved</div>
 </footer>
 
 <a href="#" id="open_preferences_center">Update cookies preferences</a>

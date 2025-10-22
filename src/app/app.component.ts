@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ApiService, Product } from './app.service';
 import { CurrencyPipe } from '@angular/common';
+import { timer } from 'rxjs';
 
 @Component({
   imports: [CurrencyPipe],
@@ -11,11 +12,19 @@ import { CurrencyPipe } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'my-app';
 
+  showCountryBar = false;
+  country = 'Germany';
+  vat = 19;
+
   private apiService: ApiService = inject(ApiService);
 
   public products = signal<Product[]>([]);
 
   ngOnInit() {
+    timer(300).subscribe(() => {
+      this.showCountryBar = true;
+    });
+
     this.apiService.getProducts$().subscribe((products) => {
       this.products.set(products);
     });
