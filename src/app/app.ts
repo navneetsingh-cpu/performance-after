@@ -1,17 +1,15 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ApiService, Product } from './app.service';
-import { CurrencyPipe } from '@angular/common';
 import { take, timer } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  imports: [CurrencyPipe],
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [CurrencyPipe],
+  templateUrl: './app.html',
 })
-export class AppComponent implements OnInit {
-  title = 'my-app';
+export class App {
+  protected readonly title = signal('my-app');
 
   showCountryBar = false;
   country = 'Germany';
